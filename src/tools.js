@@ -12,7 +12,7 @@ import {
 const SITE_ARG = {
   type: "string",
   description:
-    "Property, z. B. sc-domain:curila.app oder https://curila.app/. Ohne Angabe gilt GSC_DEFAULT_SITE.",
+    "Property, z. B. sc-domain:example.com oder https://example.com/. Ohne Angabe gilt GSC_DEFAULT_SITE.",
 };
 
 /** Default-Zeitraum: die letzten 28 Tage, mit 3 Tagen Nachlauf (GSC hinkt hinterher). */
@@ -131,7 +131,7 @@ if (!readOnly) {
     {
       name: "gsc_submit_sitemap",
       description:
-        "Reicht eine Sitemap bei Google ein. Schreibend. Die URL muss vollstaendig sein, z. B. https://curila.app/sitemap.xml.",
+        "Reicht eine Sitemap bei Google ein. Schreibend. Die URL muss vollstaendig sein, z. B. https://example.com/sitemap.xml.",
       inputSchema: {
         type: "object",
         properties: {

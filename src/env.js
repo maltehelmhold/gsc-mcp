@@ -10,7 +10,7 @@ const projectRoot = resolve(here, "..");
  * Fundorte fuer die Env-Datei, in dieser Reihenfolge:
  *
  *   1. --env-file=<pfad> oder GSC_ENV_FILE, falls gesetzt
- *   2. <projekt>/.env.local  (bei Curila ein Symlink auf den zentralen Ordner)
+ *   2. <projekt>/.env.local  (Kopie von .env.example)
  *   3. ~/Documents/.env-files/.env.local.gsc-mcp
  *
  * Die erste gefundene Datei gewinnt. Bereits gesetzte Umgebungsvariablen

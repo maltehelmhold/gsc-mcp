@@ -1,4 +1,6 @@
 import { existsSync } from "node:fs";
+import { homedir } from "node:os";
+import { resolve } from "node:path";
 import { GoogleAuth } from "google-auth-library";
 
 const WEBMASTERS = "https://www.googleapis.com/webmasters/v3";
@@ -12,6 +14,13 @@ export const defaultSite = process.env.GSC_DEFAULT_SITE || null;
 
 let client = null;
 
+/** Node expandiert "~" nicht von selbst, in Env-Dateien erst recht nicht. */
+function expandHome(path) {
+  if (path === "~") return homedir();
+  if (path.startsWith("~/")) return resolve(homedir(), path.slice(2));
+  return path;
+}
+
 /**
  * Service-Account-Client. Der Key liegt ausserhalb des Projekts, der Pfad
  * kommt aus GSC_KEY_FILE (oder GOOGLE_APPLICATION_CREDENTIALS). Ohne
@@ -20,13 +29,14 @@ let client = null;
  */
 function auth() {
   if (client) return client;
-  const keyFile = process.env.GSC_KEY_FILE || process.env.GOOGLE_APPLICATION_CREDENTIALS;
-  if (!keyFile) {
+  const rawKeyFile = process.env.GSC_KEY_FILE || process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  if (!rawKeyFile) {
     throw new Error(
       "Kein Service-Account-Key konfiguriert. Setze GSC_KEY_FILE in " +
-        "~/Documents/.env-files/.env.local.gsc-mcp auf die JSON-Datei."
+        ".env.local (Vorlage: .env.example) auf die JSON-Datei."
     );
   }
+  const keyFile = expandHome(rawKeyFile);
   if (!existsSync(keyFile)) {
     throw new Error(
       `Der Service-Account-Key fehlt: ${keyFile}\n` +

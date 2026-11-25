@@ -30,9 +30,25 @@ Abfragen pro Tag und Property gedeckelt.
 
 **2. Schlüssel ablegen**
 
+Die heruntergeladene JSON-Datei gehört an einen Ort **außerhalb dieses
+Repos**, zum Beispiel:
+
 ```
-/Users/maltekkkno/Documents/.env-files/gsc-service-account.json
+~/.gsc-mcp/service-account.json
 ```
+
+Jeder Teilnehmer legt einen eigenen Service Account an und verwendet
+seinen eigenen Schlüssel. Der Schlüssel ist ein Passwort: nie
+committen, nie weitergeben.
+
+Danach die Vorlage kopieren und den Pfad eintragen:
+
+```
+cp .env.example .env.local
+```
+
+In `.env.local` `GSC_KEY_FILE` auf den Pfad der JSON-Datei setzen und
+`GSC_DEFAULT_SITE` auf die eigene Property.
 
 **3. Service Account in der Search Console freischalten**
 
@@ -53,11 +69,14 @@ In `~/Library/Application Support/Claude/claude_desktop_config.json`:
   "mcpServers": {
     "search-console": {
       "command": "node",
-      "args": ["/Users/maltekkkno/Documents/gsc-mcp/src/index.js"]
+      "args": ["/ABSOLUTER/PFAD/ZUM/gsc-mcp/src/index.js"]
     }
   }
 }
 ```
+
+`/ABSOLUTER/PFAD/ZUM/gsc-mcp` durch den Ordner ersetzen, in den das
+Repo geklont wurde (im Repo-Ordner zeigt `pwd` den Pfad).
 
 Kein `env`-Block nötig, die Einstellungen kommen aus der Env-Datei.
 Danach die Claude-App neu starten.
@@ -76,7 +95,7 @@ samt Berechtigungsstufe und die Sitemaps der Standard-Property.
 Gesucht wird in dieser Reihenfolge, die erste gefundene Datei gewinnt:
 
 1. `--env-file=<pfad>` als Argument oder `GSC_ENV_FILE`
-2. `<projekt>/.env.local`, hier ein Symlink auf den zentralen Ordner
+2. `<projekt>/.env.local` (Kopie von `.env.example`)
 3. `~/Documents/.env-files/.env.local.gsc-mcp`
 
 Normales `KEY=VALUE`-Format. Bereits gesetzte Umgebungsvariablen werden
@@ -88,7 +107,7 @@ nicht überschrieben: was im MCP-Eintrag steht, sticht die Datei.
 | --- | --- |
 | `GSC_KEY_FILE` | Pfad zum Service-Account-JSON. Pflicht. `GOOGLE_APPLICATION_CREDENTIALS` geht auch. |
 | `GSC_ENV_FILE` | Abweichender Pfad zur Env-Datei. |
-| `GSC_DEFAULT_SITE` | Property, die ohne `site_url` benutzt wird. `sc-domain:curila.app` oder `https://curila.app/`. |
+| `GSC_DEFAULT_SITE` | Property, die ohne `site_url` benutzt wird. `sc-domain:example.com` oder `https://example.com/`. |
 | `GSC_READONLY` | Auf `1` setzen: die schreibenden Tools werden gar nicht erst angeboten, und der Server fordert nur den readonly-Scope an. |
 
 ## Hinweise

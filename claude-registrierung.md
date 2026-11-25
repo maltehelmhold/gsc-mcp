@@ -17,15 +17,15 @@ bearbeiten. Falls die Datei noch nicht existiert, einfach anlegen.)
   "mcpServers": {
     "search-console": {
       "command": "node",
-      "args": ["/Users/DEIN-BENUTZERNAME/Documents/gsc-mcp/src/index.js"]
+      "args": ["/ABSOLUTER/PFAD/ZUM/gsc-mcp/src/index.js"]
     }
   }
 }
 ```
 
-**Anpassen:** `DEIN-BENUTZERNAME` durch den macOS-Benutzernamen des
-jeweiligen Rechners ersetzen (`whoami` im Terminal zeigt ihn). Der Pfad
-muss auf das geklonte Repo zeigen.
+**Anpassen:** `/ABSOLUTER/PFAD/ZUM/gsc-mcp` durch den Ordner ersetzen,
+in den du das Repo geklont hast. Im Repo-Ordner zeigt `pwd` im Terminal
+den vollständigen Pfad. Er muss auf `src/index.js` enden.
 
 Hat die Datei schon einen `mcpServers`-Block mit anderen Servern, nur den
 Eintrag `"search-console": { ... }` dort hineinkopieren, nicht den ganzen
