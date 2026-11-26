@@ -21,6 +21,19 @@ Abfragen pro Tag und Property gedeckelt.
 
 ## Einrichtung
 
+**Vorab: Node.js und Installation**
+
+Node.js ab Version 20 muss installiert sein (`node -v` zeigt die Version).
+Im Projektordner einmal die Abhängigkeiten installieren:
+
+```
+npm install
+```
+
+Wer die ZIP-Datei von GitHub geladen hat: Der entpackte Ordner heißt
+`gsc-mcp-main`. In diesem Ordner läuft `npm install`, und sein Pfad
+kommt später in die Claude-Konfiguration.
+
 **1. Google-Projekt und Service Account**
 
 1. In der Google Cloud Console ein Projekt anlegen oder ein bestehendes wählen.
@@ -76,7 +89,7 @@ In `~/Library/Application Support/Claude/claude_desktop_config.json`:
 ```
 
 `/ABSOLUTER/PFAD/ZUM/gsc-mcp` durch den Ordner ersetzen, in den das
-Repo geklont wurde (im Repo-Ordner zeigt `pwd` den Pfad).
+Repo geklont oder entpackt wurde (im Projektordner zeigt `pwd` den Pfad).
 
 Kein `env`-Block nötig, die Einstellungen kommen aus der Env-Datei.
 Danach die Claude-App neu starten.

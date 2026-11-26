@@ -24,7 +24,7 @@ bearbeiten. Falls die Datei noch nicht existiert, einfach anlegen.)
 ```
 
 **Anpassen:** `/ABSOLUTER/PFAD/ZUM/gsc-mcp` durch den Ordner ersetzen,
-in den du das Repo geklont hast. Im Repo-Ordner zeigt `pwd` im Terminal
+in den du das Repo geklont oder die ZIP-Datei entpackt hast. Im Projektordner zeigt `pwd` im Terminal
 den vollständigen Pfad. Er muss auf `src/index.js` enden.
 
 Hat die Datei schon einen `mcpServers`-Block mit anderen Servern, nur den
